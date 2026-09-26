@@ -1,0 +1,14 @@
+# Optional: Render "Blueprint" for one-step setup.
+# In the Render dashboard: New > Blueprint > pick this repo, and Render
+# reads this file to pre-fill the service instead of you clicking through
+# each field by hand. You still enter SIH_BOT_TOKEN's value yourself since
+# secrets aren't stored in the repo.
+services:
+  - type: web
+    name: sih-telegram-bot
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: SIH_BOT_TOKEN
+        sync: false  # prompts you to enter it in the dashboard, not in git
